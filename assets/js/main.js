@@ -1207,3 +1207,10 @@ for(var i = 0; i < 10; i++){
 	contenedor.innerHTML += "<li>" + tasks[i].title  + "</li>";
 }
 
+function aniadir(){
+	
+	var nuevo = document.getElementById("new-task").value;
+	contenedor.innerHTML += "<li>" + nuevo + "</li>";
+	
+}
+
