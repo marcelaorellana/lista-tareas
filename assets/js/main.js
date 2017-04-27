@@ -1201,17 +1201,19 @@ var tasks = [
   }
 ];
 //alert("holaa");
+
 var contenedor = document.getElementById("list-tasks");
 
 for(var i = 0; i < 10; i++){
-	contenedor.innerHTML += "<li>" + tasks[i].title  + "</li>";
+	contenedor.innerHTML += "<li>" + tasks[i].title + "</li>";
 }
-
+var array = [];
 function aniadir(){
 	
 	var nuevo = document.getElementById("new-task").value;
-	contenedor.innerHTML += "<li>" + nuevo + "</li>";
-	document.getElementById("new-task").value = "";
+	var links = tasks.length + 1000 + 1;
+	var contenedor = document.getElementById("list-tasks");
+
 	var otra = {
 		"userId": 1,
 		"id": tasks.length + 1,
@@ -1219,5 +1221,31 @@ function aniadir(){
 		"completed": false
 	}
 	tasks.push(otra);
+	array.push(otra);
+	
+	contenedor.innerHTML += "<li>" + nuevo + '<a href="#" onclick="editText('+ (tasks.length + 1) +')"> Editar</a>' + "</li>" ;
+	document.getElementById("new-task").value = "";
+
 }
 
+
+function editText(ident){
+		var nuevaTarea = prompt("nombre de tarea");
+		var contenedor = document.getElementById("list-tasks");
+		contenedor.innerHTML = "";
+		
+		tasks[ident-1].title = nuevaTarea;
+
+		for(var i = 0; i < 10; i++){
+			contenedor.innerHTML += "<li>" + tasks[i].title + "</li>";
+		}
+
+		for(var i = 200; i <= tasks.length; i++){
+			contenedor.innerHTML += "<li>" + tasks[i].title + '<a href="#" onclick="editText()"> Editar</a>' + "</li>" ;
+			document.getElementById("new-task").value = "";
+		}
+			
+
+}
+	document.body.style.backgroundColor = "pink";
+	
