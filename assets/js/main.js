@@ -1211,6 +1211,12 @@ function aniadir(){
 	
 	var nuevo = document.getElementById("new-task").value;
 	contenedor.innerHTML += "<li>" + nuevo + "</li>";
-	
+	var otra = {
+		"userId": 1,
+		"id": tasks.length + 1,
+		"title": nuevo,
+		"completed": false
+	}
+	tasks.push(otra);
 }
 
